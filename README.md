@@ -7,7 +7,7 @@
 
 # Example
 
-<image src="https://github.com/q805699513/PhotoPicker/blob/master/image/paizhao.gif?raw=true" width="280px"/>  <image src="https://github.com/q805699513/PhotoPicker/blob/master/image/danxuancaijian.gif?raw=true" width="280px"/>  
+<image src="https://github.com/q805699513/PhotoPicker/blob/master/image/paizhao.gif?raw=true" />  <image src="https://github.com/q805699513/PhotoPicker/blob/master/image/danxuancaijian.gif?raw=true" width="280px"/>  
 
 <image src="https://github.com/q805699513/PhotoPicker/blob/master/image/duoxuan.gif?raw=true" width="280px"/>  <image src="https://github.com/q805699513/PhotoPicker/blob/master/image/wangtu.gif?raw=true" width="280px"/>
 
@@ -104,7 +104,7 @@ PhotoPicker.builder()
         .start(PreViewImgActivity.this);   
  ```
         
-### 长按后显示PopuWindow
+### 大图浏览长按显示PopuWindow
 [参考类](https://github.com/q805699513/PhotoPicker/blob/master/photopickerdemo/src/main/java/me/iwf/PhotoPickerDemo/PreViewImgActivity.java)
 ## 
 ```java
