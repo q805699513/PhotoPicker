@@ -7,9 +7,9 @@
 
 # Example
 
-<image src="https://github.com/q805699513/PhotoPicker/blob/master/image/paizhao.gif?raw=true" />  <image src="https://github.com/q805699513/PhotoPicker/blob/master/image/danxuancaijian.gif?raw=true" width="280px"/>  
+<image src="https://github.com/q805699513/PhotoPicker/blob/master/image/paizhao.gif?raw=true" width="350px"/>  <image src="https://github.com/q805699513/PhotoPicker/blob/master/image/danxuancaijian.gif?raw=true" width="350px"/>  
 
-<image src="https://github.com/q805699513/PhotoPicker/blob/master/image/duoxuan.gif?raw=true" width="280px"/>  <image src="https://github.com/q805699513/PhotoPicker/blob/master/image/wangtu.gif?raw=true" width="280px"/>
+<image src="https://github.com/q805699513/PhotoPicker/blob/master/image/duoxuan.gif?raw=true" width="350px"/>  <image src="https://github.com/q805699513/PhotoPicker/blob/master/image/wangtu.gif?raw=true" width="350px"/>
 
 ---
 
