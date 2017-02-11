@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_photos"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:layout_height="0dip"
+        />
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="?attr/colorPrimary"-->
+        <!--&gt;-->
+        <!--<Button-->
+            <!--android:id="@+id/button"-->
+            <!--android:text="@string/__picker_all_image"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:gravity="center"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--style="@style/Widget.AppCompat.ActionButton"-->
+            <!--android:textColor="?attr/titleTextColor"-->
+            <!--/>-->
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+        android:orientation="horizontal"
+	  android:background="?attr/colorPrimary"
+      >
+        <Button
+            android:id="@+id/button"
+            android:text="@string/__picker_all_image"
+            android:layout_width="wrap_content"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            style="@style/Widget.AppCompat.ActionButton"
+            android:textSize="16sp"
+            android:textColor="?attr/titleTextColor"
+            />
+      <ImageView
+          android:id="@+id/iv_folder_arrow"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center_vertical"
+          android:layout_marginLeft="-8dp"
+          android:layout_marginBottom="-5dp"
+          android:src="@drawable/__picker_ic_gf_triangle_arrow"
+          android:layout_centerVertical="true"
+          />
+
+  </LinearLayout>
+
+</LinearLayout>

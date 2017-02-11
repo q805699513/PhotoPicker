@@ -1,0 +1,20 @@
+language: android
+jdk: oraclejdk8
+
+before_install:
+ - chmod +x gradlew
+
+android:
+  components:
+    - tools
+    - platform-tools
+    - build-tools-25.0.1
+    - android-25
+    - extra-android-m2repository
+
+notifications:
+  email: false
+
+sudo: false
+
+script: ./gradlew clean build --stacktrace

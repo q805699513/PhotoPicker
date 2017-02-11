@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">PhotoPicker</string>
+    <string name="pick_camera">拍照并裁剪(裁剪可以设置宽高比例)</string>
+    <string name="pick_photo">选择图片</string>
+    <string name="pick_photo_without_camera">选择图片（不带拍照按钮且点击不预览图片）</string>
+    <string name="pick_one_photo">选择单张图片并裁剪</string>
+    <string name="pick_photo_gif">选择gif图片</string>
+    <string name="multiple_pick_photo">多次进入PhotoPicker选择图片</string>
+</resources>
