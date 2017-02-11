@@ -105,8 +105,9 @@ PhotoPicker.builder()
  ```
         
 ### 长按后显示PopuWindow
-[历史版本](https://github.com/q805699513/PhotoPicker/blob/master/photopickerdemo/src/main/java/me/iwf/PhotoPickerDemo/PreViewImgActivity.java)
-
+[参考类](https://github.com/q805699513/PhotoPicker/blob/master/photopickerdemo/src/main/java/me/iwf/PhotoPickerDemo/PreViewImgActivity.java)
+## 
+```java
         onLongClickListData.add("分享");
         onLongClickListData.add("保存");
         onLongClickListData.add("取消");
@@ -119,7 +120,7 @@ PhotoPicker.builder()
             }
         });
       
-        
+ ```  
 ### 图片返回
 ```java
     @Override
