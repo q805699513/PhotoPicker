@@ -103,9 +103,10 @@ PhotoPicker.builder()
         .setOnLongClickListData(onLongClickListData)
         .start(PreViewImgActivity.this);   
         ```
+        
 ## 长按后显示PopuWindow
-* [图片浏览使用类](https://github.com/q805699513/PhotoPicker/blob/master/photopickerdemo/src/main/java/me/iwf/PhotoPickerDemo/PreViewImgActivity.java)
-## 长按后显示PopuWindow  
+* **使用类**(https://github.com/q805699513/PhotoPicker/blob/master/photopickerdemo/src/main/java/me/iwf/PhotoPickerDemo/PreViewImgActivity.java)
+
        ```java
         onLongClickListData.add("分享");
         onLongClickListData.add("保存");
