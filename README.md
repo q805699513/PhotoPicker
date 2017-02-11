@@ -102,12 +102,11 @@ PhotoPicker.builder()
         //开启浏览时长按后显示PopuWindow,分享、保存、取消 等，可以自定义。
         .setOnLongClickListData(onLongClickListData)
         .start(PreViewImgActivity.this);   
-        ```
+ ```
         
 ### 长按后显示PopuWindow
 [历史版本](https://github.com/q805699513/PhotoPicker/blob/master/photopickerdemo/src/main/java/me/iwf/PhotoPickerDemo/PreViewImgActivity.java)
 
-       ```java
         onLongClickListData.add("分享");
         onLongClickListData.add("保存");
         onLongClickListData.add("取消");
@@ -119,7 +118,7 @@ PhotoPicker.builder()
                 Toast.makeText(PreViewImgActivity.this, "你点击了：" + onLongClickListData.get(position) + "，图片路径：" + path, Toast.LENGTH_LONG).show();
             }
         });
-        ```
+      
         
 ### 图片返回
 ```java
