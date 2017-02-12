@@ -108,8 +108,11 @@ PhotoPicker.builder()
         
 ### 大图浏览长按显示PopuWindow
 [使用参考类](https://github.com/q805699513/PhotoPicker/blob/master/photopickerdemo/src/main/java/me/iwf/PhotoPickerDemo/PreViewImgActivity.java)
+//放大预览后可长按图片进行下载、分享、取消（示例）等（自定义）操作,已将选择事件回调回Activity（可根据需求自定义）
+.setOnLongClickListData(onLongClickListData)
 ## 
 ```java
+        //activity或者fragment里图片浏览时使用
         onLongClickListData.add("分享");
         onLongClickListData.add("保存");
         onLongClickListData.add("取消");
@@ -118,7 +121,8 @@ PhotoPicker.builder()
         photoOnLongClickManager.setOnLongClickListener(new PhotoOnLongClick() {
             @Override
             public void sendOnLongClick(int position, String path) {
-                Toast.makeText(PreViewImgActivity.this, "你点击了：" + onLongClickListData.get(position) + "，图片路径：" + path, Toast.LENGTH_LONG).show();
+            //自己实现分享或者保存等自定义操作
+                Toast.makeText(PreViewImgActivity.this, "你点击了：" + onLongClickListData.get(position) + "，图片路径：" + path, Toast.LENGTH_LONG).show();
             }
         });
       
