@@ -81,18 +81,16 @@ PhotoPicker.builder()
 
 ### 大图浏览
 ```java
-  //多选选中图片返回后点击大图浏览界面删除
-   PhotoPreview.builder()
-           //附带已经选中过的图片
-          .setPhotos(selectedPhotos)
-          //设置要浏览图片的第position张
-          .setCurrentItem(position)
-          .start(MainActivity.this);
+  //多选选中图片后点击进入大图浏览界面以及标题栏显示删除按钮
+   PhotoPreview.builder()
+         //附带已经选中过的图片
+         .setPhotos(selectedPhotos)
+         //设置要浏览图片的第position张
+         .setCurrentItem(position)
+         .start(MainActivity.this);
   
   
-  
-  
- //图片浏览
+ //图片浏览,全屏模式
  ArrayList<String> imgData = new ArrayList<>();
  PhotoPreview.builder()
         //设置浏览的图片数据
