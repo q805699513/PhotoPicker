@@ -112,6 +112,7 @@ PhotoPicker.builder()
 .setOnLongClickListData(onLongClickListData)
 ## 
 ```java
+        private ArrayList<String> onLongClickListData = new ArrayList<>();
         //activity或者fragment里图片浏览时使用
         onLongClickListData.add("分享");
         onLongClickListData.add("保存");
@@ -125,8 +126,11 @@ PhotoPicker.builder()
                 Toast.makeText(PreViewImgActivity.this, "你点击了：" + onLongClickListData.get(position) + "，图片路径：" + path, Toast.LENGTH_LONG).show();
             }
         });
-      
- ```  
+        
+      //图片浏览API设置
+      //.setOnLongClickListData(onLongClickListData)
+      
+ ```  
 ### 图片返回
 ```java
     @Override
