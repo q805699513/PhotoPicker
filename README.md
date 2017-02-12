@@ -1,23 +1,15 @@
 
 # PhotoPicker
-[![CircleCI](https://circleci.com/gh/donglua/PhotoPicker/tree/master.svg?style=svg)](https://circleci.com/gh/donglua/PhotoPicker/tree/master)
-[![Build Status](https://travis-ci.org/donglua/PhotoPicker.svg?branch=master)](https://travis-ci.org/donglua/PhotoPicker)
-[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-PhotoPicker-green.svg?style=flat)](https://android-arsenal.com/details/1/2091)
-[ ![Download](https://api.bintray.com/packages/donglua/maven/PhotoPicker/images/download.svg) ](https://bintray.com/donglua/maven/PhotoPicker/_latestVersion)
-[![API](https://img.shields.io/badge/API-10%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=10)
+
+一款图片选择器，支持直接拍照并裁剪，单选裁剪，图片多选，裁剪比例设置等
 
 ---
 
 # Example
-![](http://ww2.sinaimg.cn/large/5e9a81dbgw1etra61rnr9j206z0ce3yu.jpg)
-![](http://ww3.sinaimg.cn/large/5e9a81dbgw1etra6q2edzj206z0cedgg.jpg)
-![](http://ogkb67oc8.bkt.clouddn.com/F028B942CF5978D900B15033941478B7.jpg?imageView2/2/w/250/)
 
-<p style="float:left;">
- <a href="https://play.google.com/store/apps/details?id=me.iwf.PhotoPickerDemo&utm_source=global_co&utm_medium=prtnr&utm_content=Mar2515&utm_campaign=PartBadge&pcampaignid=MKT-AC-global-none-all-co-pr-py-PartBadges-Oct1515-1">
- <img HEIGHT="80" WIDTH="270" alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/images/apps/en-play-badge.png" />
- </a>
-</p>
+<image src="https://github.com/q805699513/PhotoPicker/blob/master/image/paizhao.gif?raw=true" width="350px"/>  <image src="https://github.com/q805699513/PhotoPicker/blob/master/image/danxuancaijian.gif?raw=true" width="350px"/>  
+
+<image src="https://github.com/q805699513/PhotoPicker/blob/master/image/duoxuan.gif?raw=true" width="350px"/>  <image src="https://github.com/q805699513/PhotoPicker/blob/master/image/wangtu.gif?raw=true" width="350px"/>
 
 ---
 
@@ -27,13 +19,13 @@
 
 ```groovy
 dependencies {
-    compile 'me.iwf.photopicker:PhotoPicker:0.9.5@aar'
+    compile 'com.longsh:PhotoPicker:7.1.0'
     
-    compile 'com.android.support:appcompat-v7:23.4.0'
-    compile 'com.android.support:recyclerview-v7:23.4.0'
-    compile 'com.android.support:design:23.4.0'
-    compile 'com.nineoldandroids:library:2.4.0'
-    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'com.android.support:design:25.1.0'
+    compile 'com.android.support:recyclerview-v7:25.1.0'
+    compile "com.nineoldandroids:library:2.4.0"
+    compile "com.github.bumptech.glide:glide:3.7.0"
+    compile 'com.yalantis:ucrop:2.2.0'
 }
 ```
 * ```appcompat-v7```version >= 23.0.0
@@ -41,39 +33,122 @@ dependencies {
 ### eclipse
 [![GO HOME](http://ww4.sinaimg.cn/large/5e9a81dbgw1eu90m08v86j20dw09a3yu.jpg)
 
-### Pick Photo
+### 拍照并裁剪
 ```java
 PhotoPicker.builder()
-    .setPhotoCount(9)
-    .setShowCamera(true)
-    .setShowGif(true)
-    .setPreviewEnabled(false)
-    .start(this, PhotoPicker.REQUEST_CODE);
-```
-
-### Preview Photo
-
-```java
-ArrayList<String> photoPaths = ...;
-
-PhotoPreview.builder()
-    .setPhotos(selectedPhotos)
-    .setCurrentItem(position)
+    //直接拍照
+    .setOpenCamera(true)
+    //拍照后裁剪
+    .setCrop(true)
+    //设置裁剪比例(X,Y)
+    //.setCropXY(1, 1)
     .start(MainActivity.this);
 ```
 
-### onActivityResult
+### 单选并裁剪
 ```java
-@Override protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-  super.onActivityResult(requestCode, resultCode, data);
+ PhotoPicker.builder()
+     //设置图片选择数量
+     .setPhotoCount(1)
+     //取消选择时点击图片浏览
+     .setPreviewEnabled(false)
+     //开启裁剪
+     .setCrop(true)
+     //设置裁剪比例(X,Y)
+     .setCropXY(1, 1)
+     //设置裁剪界面标题栏颜色，设置裁剪界面状态栏颜色
+     .setCropColors(R.color.colorPrimary, R.color.colorPrimaryDark)
+     .start(MainActivity.this);
+```
 
-  if (resultCode == RESULT_OK && requestCode == PhotoPicker.REQUEST_CODE) {
-    if (data != null) {
-      ArrayList<String> photos = 
-          data.getStringArrayListExtra(PhotoPicker.KEY_SELECTED_PHOTOS);
+### 图片多选
+```java
+ private ArrayList<String> selectedPhotos = new ArrayList<>();
+ PhotoPicker.builder()
+        //设置选择个数
+        .setPhotoCount(9)
+        //选择界面第一个显示拍照按钮
+        .setShowCamera(true)
+        //选择时点击图片放大浏览
+        .setPreviewEnabled(true)
+        //附带已经选中过的图片
+        .setSelected(selectedPhotos)
+        .start(MainActivity.this);           
+```
+
+### 大图浏览
+```java
+  //多选选中图片返回后点击大图浏览界面删除
+   PhotoPreview.builder()
+           //附带已经选中过的图片
+          .setPhotos(selectedPhotos)
+          //设置要浏览图片的第position张
+          .setCurrentItem(position)
+          .start(MainActivity.this);
+  //对selectedPhotos进行操作可以达到选择了的图片进行删除。
+  
+  
+  
+ //图片浏览
+ ArrayList<String> imgData = new ArrayList<>();
+ PhotoPreview.builder()
+        //设置浏览的图片数据
+        .setPhotos(imgData)
+        //设置点击后浏览的是第几张图
+        .setCurrentItem(position)
+        //浏览时不要标题栏  
+        //setShowDeleteButton浏览时显示删除按钮.
+        .setShowToolbar(false)
+        //开启浏览时长按后显示PopuWindow,分享、保存、取消 等，可以自定义。
+        .setOnLongClickListData(onLongClickListData)
+        .start(PreViewImgActivity.this);   
+ ```
+        
+### 大图浏览长按显示PopuWindow
+[使用参考类](https://github.com/q805699513/PhotoPicker/blob/master/photopickerdemo/src/main/java/me/iwf/PhotoPickerDemo/PreViewImgActivity.java)
+## 
+```java
+        onLongClickListData.add("分享");
+        onLongClickListData.add("保存");
+        onLongClickListData.add("取消");
+        //图片长按后的item点击事件回调
+        PhotoOnLongClickManager photoOnLongClickManager = PhotoOnLongClickManager.getInstance();
+        photoOnLongClickManager.setOnLongClickListener(new PhotoOnLongClick() {
+            @Override
+            public void sendOnLongClick(int position, String path) {
+                Toast.makeText(PreViewImgActivity.this, "你点击了：" + onLongClickListData.get(position) + "，图片路径：" + path, Toast.LENGTH_LONG).show();
+            }
+        });
+      
+ ```  
+### 图片返回
+```java
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        //选择返回
+        if (resultCode == RESULT_OK &&
+                (requestCode == PhotoPicker.REQUEST_CODE || requestCode == PhotoPreview.REQUEST_CODE)) {
+            iv_crop.setVisibility(View.GONE);
+            recyclerView.setVisibility(View.VISIBLE);
+
+            List<String> photos = null;
+            if (data != null) {
+                photos = data.getStringArrayListExtra(PhotoPicker.KEY_SELECTED_PHOTOS);
+            }
+            selectedPhotos.clear();
+            if (photos != null) {
+                selectedPhotos.addAll(photos);
+            }
+            photoAdapter.notifyDataSetChanged();
+        }
+        //拍照功能或者裁剪功能返回
+        if (resultCode == RESULT_OK && requestCode == PhotoPicker.CROP_CODE) {
+            iv_crop.setVisibility(View.VISIBLE);
+            recyclerView.setVisibility(View.GONE);
+            Glide.with(getApplicationContext()).load(Uri.fromFile(new File(data.getStringExtra(PhotoPicker.KEY_CAMEAR_PATH)))).into(iv_crop);
+        }
     }
-  }
-}
 ```
 
 ### manifest
@@ -87,30 +162,37 @@ PhotoPreview.builder()
     ...
     >
     ...
-    
-    <activity android:name="me.iwf.photopicker.PhotoPickerActivity"
-      android:theme="@style/Theme.AppCompat.NoActionBar" 
-       />
+   
+       <activity
+            android:name="me.iwf.photopicker.PhotoPickerActivity"
+            android:theme="@style/customTheme" />
 
-    <activity android:name="me.iwf.photopicker.PhotoPagerActivity"
-      android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity
+            android:name="me.iwf.photopicker.PhotoPagerActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+
+        <activity
+            android:name="com.yalantis.ucrop.UCropActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
     
   </application>
 </manifest>
 ```
 ### Custom style
 ```xml
-<style name="actionBarTheme" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
-  <item name="android:textColorPrimary">@android:color/primary_text_light</item>
-  <item name="actionBarSize">@dimen/actionBarSize</item>
-</style>
+    <style name="actionBarTheme" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:textColorPrimary">#fff</item>
+        <item name="actionBarSize">56dip</item>
+    </style>
 
-<style name="customTheme" parent="Theme.AppCompat.Light.NoActionBar">
-  <item name="actionBarTheme">@style/actionBarTheme</item>
-  <item name="colorPrimary">#FFA500</item>
-  <item name="actionBarSize">@dimen/actionBarSize</item>
-  <item name="colorPrimaryDark">#CCa500</item>
-</style>
+    <style name="customTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="titleTextColor">#ffffff</item>
+        <item name="actionBarTheme">@style/actionBarTheme</item>
+        <item name="colorPrimary">#38393E</item>
+        <item name="actionBarSize">56dip</item>
+        <item name="colorPrimaryDark">#2F3034</item>
+    </style>
 ```
 
 ### Proguard
@@ -138,26 +220,34 @@ PhotoPreview.builder()
 -keep class android.support.design.** { *; }
 -keep interface android.support.design.** { *; }
 -keep public class android.support.design.R$* { *; }
+# ucrop
+-dontwarn com.yalantis.ucrop**
+-keep class com.yalantis.ucrop** { *; }
+-keep interface com.yalantis.ucrop** { *; }
 ```
 
 ---
 
+## Thanks
+* [uCrop](https://github.com/Yalantis/uCrop)
+* [Glide](https://github.com/bumptech/glide)
+* [donglua](https://github.com/donglua/PhotoPicker)
 
-# License
+## License
+```text
 
-    Copyright 2015 Huang Donglu
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
 
-    Licensed under the Apache License, Version 2.0 (the "License");
-    you may not use this file except in compliance with the License.
-    You may obtain a copy of the License at
+   http://www.apache.org/licenses/LICENSE-2.0
 
-        http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+```
 
 
 
