@@ -105,7 +105,7 @@ PhotoPicker.builder()
  ```
         
 ### 大图浏览长按显示PopuWindow
-[参考类](https://github.com/q805699513/PhotoPicker/blob/master/photopickerdemo/src/main/java/me/iwf/PhotoPickerDemo/PreViewImgActivity.java)
+[使用参考类](https://github.com/q805699513/PhotoPicker/blob/master/photopickerdemo/src/main/java/me/iwf/PhotoPickerDemo/PreViewImgActivity.java)
 ## 
 ```java
         onLongClickListData.add("分享");
