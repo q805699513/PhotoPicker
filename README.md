@@ -42,6 +42,8 @@ PhotoPicker.builder()
     .setCrop(true)
     //设置裁剪比例(X,Y)
     //.setCropXY(1, 1)
+    //设置裁剪界面标题栏颜色，设置裁剪界面状态栏颜色
+    //.setCropColors(R.color.colorPrimary, R.color.colorPrimaryDark)
     .start(MainActivity.this);
 ```
 
@@ -162,10 +164,11 @@ PhotoPicker.builder()
     }
 ```
 
-### manifest
+### manifest //设置权限以及注册Activity
 ```xml
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     >
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.CAMERA" />
@@ -190,7 +193,7 @@ PhotoPicker.builder()
   </application>
 </manifest>
 ```
-### Custom style
+### Custom style //设置图片选择界面样式
 ```xml
     <style name="actionBarTheme" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
         <item name="android:textColorPrimary">#fff</item>
