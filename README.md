@@ -73,7 +73,9 @@ PhotoPicker.builder()
         .setPreviewEnabled(true)
         //附带已经选中过的图片
         .setSelected(selectedPhotos)
-        .start(MainActivity.this);           
+        .start(MainActivity.this);    
+        
+        //多选返回图片后对ArrayList<String> selectedPhotos里的数据操作可达到删除所选择的图片。
 ```
 
 ### 大图浏览
@@ -85,7 +87,7 @@ PhotoPicker.builder()
           //设置要浏览图片的第position张
           .setCurrentItem(position)
           .start(MainActivity.this);
-  //对selectedPhotos进行操作可以达到选择了的图片进行删除。
+  
   
   
   
