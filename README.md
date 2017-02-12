@@ -152,7 +152,7 @@ PhotoPicker.builder()
             }
             photoAdapter.notifyDataSetChanged();
         }
-        //拍照功能或者裁剪功能返回
+        //拍照功能或者裁剪后返回
         if (resultCode == RESULT_OK && requestCode == PhotoPicker.CROP_CODE) {
             iv_crop.setVisibility(View.VISIBLE);
             recyclerView.setVisibility(View.GONE);
@@ -200,9 +200,11 @@ PhotoPicker.builder()
     <style name="customTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="titleTextColor">#ffffff</item>
         <item name="actionBarTheme">@style/actionBarTheme</item>
+        <!--设置图片选择界面标题栏以及底栏颜色-->
         <item name="colorPrimary">#38393E</item>
-        <item name="actionBarSize">56dip</item>
+        <!--设置图片选择界面状态栏颜色-->
         <item name="colorPrimaryDark">#2F3034</item>
+        <item name="actionBarSize">56dip</item>
     </style>
 ```
 
