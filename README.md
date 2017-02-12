@@ -233,7 +233,7 @@ PhotoPicker.builder()
 ## Thanks
 * [uCrop](https://github.com/Yalantis/uCrop)
 * [Glide](https://github.com/bumptech/glide)
-* [donglua](https://github.com/donglua/PhotoPicker)
+* [PhotoPicker](https://github.com/donglua/PhotoPicker)
 
 ## License
 ```text
