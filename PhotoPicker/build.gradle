@@ -1,58 +1,59 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.novoda.bintray-release'
 android {
-  compileSdkVersion 25
-  buildToolsVersion "25.0.1"
-  resourcePrefix "__picker_"
+    compileSdkVersion 25
+    buildToolsVersion "25.0.1"
+    resourcePrefix "__picker_"
+    lintOptions {
+        abortOnError false
+        checkReleaseBuilds false
+    }
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion 25
+    }
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
 
-  dexOptions {
-    javaMaxHeapSize "4g"
-  }
-
-
-  defaultConfig {
-    minSdkVersion 14
-    targetSdkVersion 25
-  }
-  lintOptions {
-    abortOnError false
-  }
-
-  buildTypes {
-//    release {
-//      minifyEnabled false
-//      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-//    }
-  }
+    buildTypes {
+//        release {
+//            minifyEnabled false
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//        }
+    }
 }
+
 ext {
-  supportLibVersion = "25.0.1"
+    supportLibVersion = "25.1.0"
 }
 dependencies {
-  compile "com.android.support:support-v4:$supportLibVersion"
-  compile "com.android.support:appcompat-v7:$supportLibVersion"
-  compile "com.android.support:design:$supportLibVersion"
-  compile "com.android.support:recyclerview-v7:$supportLibVersion"
-  compile "com.android.support:support-annotations:$supportLibVersion"
-  compile "com.nineoldandroids:library:2.4.0"
-  compile "com.github.bumptech.glide:glide:3.7.0"
-  compile 'com.yalantis:ucrop:2.2.0'
+
+    compile "com.android.support:appcompat-v7:$supportLibVersion"
+    provided "com.android.support:design:$supportLibVersion"
+//    provided "com.android.support:support-annotations:$supportLibVersion"
+    provided "com.android.support:recyclerview-v7:$supportLibVersion"
+    provided 'com.nineoldandroids:library:2.4.0'
+    provided 'com.yalantis:ucrop:2.2.0'
+    provided 'com.github.bumptech.glide:glide:3.7.0'
+
+
 }
 
 publish {
-  userOrg = 'longsh'
-  groupId = 'com.longsh'
-  artifactId = 'PhotoPicker'
-  publishVersion = '1.0.0'
-  desc = 'Photo Picker'
-  website = 'https://github.com/q805699513/PhotoPicker'
+    userOrg = 'longsh'
+    groupId = 'com.longsh'
+    artifactId = 'PhotoPicker'
+    publishVersion = '1.0.1'
+    desc = 'Photo Picker'
+    website = 'https://github.com/q805699513/PhotoPicker'
 }
 allprojects {
-  tasks.withType(Javadoc) {
-    options{
-      encoding "UTF-8"
-      charSet 'UTF-8'
-      links "http://docs.oracle.com/javase/7/docs/api"
+    tasks.withType(Javadoc) {
+        options {
+            encoding "UTF-8"
+            charSet 'UTF-8'
+            links "http://docs.oracle.com/javase/7/docs/api"
+        }
     }
-  }
 }
