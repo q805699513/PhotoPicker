@@ -18,7 +18,7 @@
 
 ```groovy
 dependencies {
-    compile 'com.longsh:PhotoPicker:1.0.1'
+    compile 'com.longsh:PhotoPicker:1.2.0'
     
     compile 'com.android.support:design:25.1.0'
     compile 'com.android.support:recyclerview-v7:25.1.0'
