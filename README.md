@@ -198,7 +198,6 @@ PhotoPicker.builder()
     </style>
 
     <style name="customTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="titleTextColor">#ffffff</item>
         <item name="actionBarTheme">@style/actionBarTheme</item>
         <!--设置图片选择界面标题栏以及底栏颜色-->
         <item name="colorPrimary">#38393E</item>
