@@ -44,7 +44,7 @@ publish {
     userOrg = 'longsh'
     groupId = 'com.longsh'
     artifactId = 'PhotoPicker'
-    publishVersion = '1.0.1'
+    publishVersion = '1.2.0'
     desc = 'Photo Picker'
     website = 'https://github.com/q805699513/PhotoPicker'
 }

@@ -84,7 +84,7 @@ public class PhotoPickerActivity extends AppCompatActivity {
         cropY = getIntent().getIntExtra(EXTRA_CROP_Y, 1);
 
         toolbarColor = getIntent().getIntExtra(EXTRA_CROP_TOOLBARCOLOR, R.color.__picker_crop_toolbar_bg);
-        statusbarColor = getIntent().getIntExtra(EXTRA_CROP_STATUSBARCOLOR,  R.color.__picker_crop_status_bg);
+        statusbarColor = getIntent().getIntExtra(EXTRA_CROP_STATUSBARCOLOR, R.color.__picker_crop_status_bg);
         boolean showGif = getIntent().getBooleanExtra(EXTRA_SHOW_GIF, false);
         boolean previewEnabled = getIntent().getBooleanExtra(EXTRA_PREVIEW_ENABLED, true);
 
@@ -112,7 +112,7 @@ public class PhotoPickerActivity extends AppCompatActivity {
         pickerFragment = (PhotoPickerFragment) getSupportFragmentManager().findFragmentByTag("tag");
         if (pickerFragment == null) {
             pickerFragment = PhotoPickerFragment
-                    .newInstance(showCamera, showGif, previewEnabled, columnNumber, maxCount, originalPhotos, isCrop,openCamera);
+                    .newInstance(showCamera, showGif, previewEnabled, columnNumber, maxCount, originalPhotos, isCrop, openCamera);
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.container, pickerFragment, "tag")
@@ -161,21 +161,19 @@ public class PhotoPickerActivity extends AppCompatActivity {
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.ENGLISH).format(new Date());
         String imageFileName = "JPEG_" + timeStamp + ".jpg";
 
-        UCrop uCrop = UCrop.of(Uri.fromFile(new File(path)), Uri.fromFile(new File(getActivity().getCacheDir(),  imageFileName)));
-        uCrop = uCrop.withAspectRatio(cropX, cropY);
         UCrop.Options options = new UCrop.Options();
         options.setCompressionFormat(Bitmap.CompressFormat.JPEG);
         options.setHideBottomControls(true);
         options.setFreeStyleCropEnabled(false);
         options.setCompressionQuality(90);
-
-        options.setToolbarColor(ContextCompat.getColor(this,toolbarColor));
+        options.setToolbarColor(ContextCompat.getColor(this, toolbarColor));
         options.setStatusBarColor(ContextCompat.getColor(this, statusbarColor));
 
-        uCrop = uCrop.withOptions(options);
-        uCrop.start(PhotoPickerActivity.this);
+        UCrop.of(Uri.fromFile(new File(path)), Uri.fromFile(new File(getActivity().getCacheDir(), imageFileName)))
+                .withAspectRatio(cropX, cropY)
+                .withOptions(options)
+                .start(PhotoPickerActivity.this);
     }
-
 
     /**
      * Overriding this method allows us to run our exit animation first, then exiting

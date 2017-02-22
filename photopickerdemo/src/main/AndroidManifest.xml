@@ -6,6 +6,7 @@
       - Include all the "features" under the camera permission,
       - and mark them all as optional.
       -->
+	<uses-permission android:name="android.permission.INTERNET" />
     <uses-feature
         android:name="android.hardware.camera"
         android:required="false" />
@@ -49,5 +50,5 @@
             android:value="423ff17515038a50c41085cc2dbd0087d2e51cbb" />
     </application>
 
-    <uses-permission android:name="android.permission.INTERNET" />
+    
 </manifest>
