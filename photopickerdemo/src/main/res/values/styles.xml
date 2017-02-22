@@ -10,7 +10,6 @@
     </style>
 
     <style name="customTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="titleTextColor">#ffffff</item>
         <item name="actionBarTheme">@style/actionBarTheme</item>
         <item name="colorPrimary">#38393E</item>
         <item name="colorPrimaryDark">#2F3034</item>
