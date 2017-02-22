@@ -172,7 +172,7 @@ PhotoPicker.builder()
     ...
     >
     ...
-       <!--@style/PhotoTheme是图片选择界面样式，文档有提供，不要漏掉添加-->
+       <!--@style/PhotoTheme是图片选择界面样式，文档有提供，不要漏掉添加到values/styles里-->
        <activity
             android:name="me.iwf.photopicker.PhotoPickerActivity"
             android:theme="@style/PhotoTheme" />
