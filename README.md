@@ -18,8 +18,7 @@
 
 ```groovy
 dependencies {
-    compile 'com.longsh:PhotoPicker:1.3.0'
-    
+    compile 'com.longsh:PhotoPicker:1.4.0'
     compile 'com.android.support:design:25.1.0'
     compile 'com.android.support:recyclerview-v7:25.1.0'
     compile "com.nineoldandroids:library:2.4.0"
@@ -173,10 +172,10 @@ PhotoPicker.builder()
     ...
     >
     ...
-   
+       <!--@style/PhotoTheme是图片选择界面样式，文档有提供，不要漏掉添加-->
        <activity
             android:name="me.iwf.photopicker.PhotoPickerActivity"
-            android:theme="@style/customTheme" />
+            android:theme="@style/PhotoTheme" />
 
         <activity
             android:name="me.iwf.photopicker.PhotoPagerActivity"
@@ -190,19 +189,18 @@ PhotoPicker.builder()
   </application>
 </manifest>
 ```
-### Custom style //设置图片选择界面样式
+### Custom style //设置图片选择界面样式(@style/PhotoTheme样式)
 ```xml
-    <style name="actionBarTheme" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
-        <item name="android:textColorPrimary">#fff</item>
-        <item name="actionBarSize">56dip</item>
-    </style>
-
-    <style name="customTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="PhotoTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="actionBarTheme">@style/actionBarTheme</item>
         <!--设置图片选择界面标题栏以及底栏颜色-->
         <item name="colorPrimary">#38393E</item>
         <!--设置图片选择界面状态栏颜色-->
         <item name="colorPrimaryDark">#2F3034</item>
+        <item name="actionBarSize">56dip</item>
+    </style>
+    <style name="actionBarTheme" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:textColorPrimary">#fff</item>
         <item name="actionBarSize">56dip</item>
     </style>
 ```
@@ -242,8 +240,8 @@ PhotoPicker.builder()
 ---
 ## 更新日志
 
-### Version: 1.3.0
-  *  [#1](https://github.com/q805699513/PhotoPicker/issues/1) 修复了一些问题!
+### Version: 1.4.0
+  *  [#1](https://github.com/q805699513/PhotoPicker/issues/1) 优化了一些问题!
 
 ## Thanks
 * [uCrop](https://github.com/Yalantis/uCrop)
