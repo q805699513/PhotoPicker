@@ -18,7 +18,7 @@
 
 ```groovy
 dependencies {
-    compile 'com.longsh:PhotoPicker:1.2.0'
+    compile 'com.longsh:PhotoPicker:1.3.0'
     
     compile 'com.android.support:design:25.1.0'
     compile 'com.android.support:recyclerview-v7:25.1.0'
@@ -242,7 +242,7 @@ PhotoPicker.builder()
 ---
 ## 更新日志
 
-### Version: 1.2.0
+### Version: 1.3.0
   *  [#1](https://github.com/q805699513/PhotoPicker/issues/1) 修复了一些问题!
 
 ## Thanks
