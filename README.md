@@ -244,7 +244,7 @@ PhotoPicker.builder()
 ## 更新日志
 
 ### Version: 1.2.0
-  *  [#1](https://github.com/q805699513/PhotoPicker/issues/1) and more!
+  *  [#1](https://github.com/q805699513/PhotoPicker/issues/1) 修复了一些问题!
 
 ## Thanks
 * [uCrop](https://github.com/Yalantis/uCrop)
