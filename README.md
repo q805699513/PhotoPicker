@@ -18,7 +18,7 @@
 
 ```groovy
 dependencies {
-    compile 'com.longsh:PhotoPicker:1.2.0'
+    compile 'com.longsh:PhotoPicker:1.3.0'
     
     compile 'com.android.support:design:25.1.0'
     compile 'com.android.support:recyclerview-v7:25.1.0'
@@ -198,7 +198,6 @@ PhotoPicker.builder()
     </style>
 
     <style name="customTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="titleTextColor">#ffffff</item>
         <item name="actionBarTheme">@style/actionBarTheme</item>
         <!--设置图片选择界面标题栏以及底栏颜色-->
         <item name="colorPrimary">#38393E</item>
@@ -243,8 +242,8 @@ PhotoPicker.builder()
 ---
 ## 更新日志
 
-### Version: 1.2.0
-  *  [#1](https://github.com/q805699513/PhotoPicker/issues/1) and more!
+### Version: 1.3.0
+  *  [#1](https://github.com/q805699513/PhotoPicker/issues/1) 修复了一些问题!
 
 ## Thanks
 * [uCrop](https://github.com/Yalantis/uCrop)
