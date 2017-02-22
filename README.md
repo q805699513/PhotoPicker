@@ -1,8 +1,7 @@
 
 # PhotoPicker
 
-一款图片选择器，支持直接拍照并裁剪，单选裁剪，图片多选，裁剪比例设置等
-
+一款Android图片选择器，支持直接拍照、拍照并裁剪、单选裁剪、图片多选、图片放大预览、裁剪比例设置等，满足APP图片拍照、选择等模块需求。
 ---
 
 # Example
@@ -19,7 +18,7 @@
 
 ```groovy
 dependencies {
-    compile 'com.longsh:PhotoPicker:7.1.0'
+    compile 'com.longsh:PhotoPicker:1.2.0'
     
     compile 'com.android.support:design:25.1.0'
     compile 'com.android.support:recyclerview-v7:25.1.0'
@@ -42,6 +41,8 @@ PhotoPicker.builder()
     .setCrop(true)
     //设置裁剪比例(X,Y)
     //.setCropXY(1, 1)
+    //设置裁剪界面标题栏颜色，设置裁剪界面状态栏颜色
+    //.setCropColors(R.color.colorPrimary, R.color.colorPrimaryDark)
     .start(MainActivity.this);
 ```
 
@@ -73,23 +74,23 @@ PhotoPicker.builder()
         .setPreviewEnabled(true)
         //附带已经选中过的图片
         .setSelected(selectedPhotos)
-        .start(MainActivity.this);           
+        .start(MainActivity.this);    
+        
+        //多选返回图片后对ArrayList<String> selectedPhotos里的数据操作可达到删除所选择的图片。
 ```
 
 ### 大图浏览
 ```java
-  //多选选中图片返回后点击大图浏览界面删除
-   PhotoPreview.builder()
-           //附带已经选中过的图片
-          .setPhotos(selectedPhotos)
-          //设置要浏览图片的第position张
-          .setCurrentItem(position)
-          .start(MainActivity.this);
-  //对selectedPhotos进行操作可以达到选择了的图片进行删除。
+  //多选选中图片后点击进入大图浏览界面以及标题栏显示删除按钮
+   PhotoPreview.builder()
+         //附带已经选中过的图片
+         .setPhotos(selectedPhotos)
+         //设置要浏览图片的第position张
+         .setCurrentItem(position)
+         .start(MainActivity.this);
+  
   
-  
-  
- //图片浏览
+ //图片浏览,全屏模式
  ArrayList<String> imgData = new ArrayList<>();
  PhotoPreview.builder()
         //设置浏览的图片数据
@@ -106,8 +107,12 @@ PhotoPicker.builder()
         
 ### 大图浏览长按显示PopuWindow
 [使用参考类](https://github.com/q805699513/PhotoPicker/blob/master/photopickerdemo/src/main/java/me/iwf/PhotoPickerDemo/PreViewImgActivity.java)
-## 
+//放大预览后可长按图片进行下载、分享、取消（示例）等（自定义）操作,已将选择事件回调回Activity（可根据需求自定义）
+.setOnLongClickListData(onLongClickListData)
+### 
 ```java
+        private ArrayList<String> onLongClickListData = new ArrayList<>();
+        //activity或者fragment里图片浏览时使用
         onLongClickListData.add("分享");
         onLongClickListData.add("保存");
         onLongClickListData.add("取消");
@@ -116,12 +121,17 @@ PhotoPicker.builder()
         photoOnLongClickManager.setOnLongClickListener(new PhotoOnLongClick() {
             @Override
             public void sendOnLongClick(int position, String path) {
-                Toast.makeText(PreViewImgActivity.this, "你点击了：" + onLongClickListData.get(position) + "，图片路径：" + path, Toast.LENGTH_LONG).show();
+            //自己实现分享或者保存等自定义操作
+                Toast.makeText(PreViewImgActivity.this, "你点击了：" + onLongClickListData.get(position) + "，图片路径：" + path, Toast.LENGTH_LONG).show();
             }
         });
-      
- ```  
-### 图片返回
+        
+      //图片浏览API设置
+      //.setOnLongClickListData(onLongClickListData)
+ 
+ ```
+ 
+### 图片返回 
 ```java
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -142,7 +152,7 @@ PhotoPicker.builder()
             }
             photoAdapter.notifyDataSetChanged();
         }
-        //拍照功能或者裁剪功能返回
+        //拍照功能或者裁剪后返回
         if (resultCode == RESULT_OK && requestCode == PhotoPicker.CROP_CODE) {
             iv_crop.setVisibility(View.VISIBLE);
             recyclerView.setVisibility(View.GONE);
@@ -151,10 +161,11 @@ PhotoPicker.builder()
     }
 ```
 
-### manifest
+### manifest //设置权限以及注册Activity
 ```xml
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     >
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.CAMERA" />
@@ -179,7 +190,7 @@ PhotoPicker.builder()
   </application>
 </manifest>
 ```
-### Custom style
+### Custom style //设置图片选择界面样式
 ```xml
     <style name="actionBarTheme" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
         <item name="android:textColorPrimary">#fff</item>
@@ -189,9 +200,11 @@ PhotoPicker.builder()
     <style name="customTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="titleTextColor">#ffffff</item>
         <item name="actionBarTheme">@style/actionBarTheme</item>
+        <!--设置图片选择界面标题栏以及底栏颜色-->
         <item name="colorPrimary">#38393E</item>
-        <item name="actionBarSize">56dip</item>
+        <!--设置图片选择界面状态栏颜色-->
         <item name="colorPrimaryDark">#2F3034</item>
+        <item name="actionBarSize">56dip</item>
     </style>
 ```
 
@@ -224,14 +237,19 @@ PhotoPicker.builder()
 -dontwarn com.yalantis.ucrop**
 -keep class com.yalantis.ucrop** { *; }
 -keep interface com.yalantis.ucrop** { *; }
+-ignorewarnings
 ```
 
 ---
+## 更新日志
+
+### Version: 1.2.0
+  *  [#1](https://github.com/q805699513/PhotoPicker/issues/1) and more!
 
 ## Thanks
 * [uCrop](https://github.com/Yalantis/uCrop)
 * [Glide](https://github.com/bumptech/glide)
-* [donglua](https://github.com/donglua/PhotoPicker)
+* [PhotoPicker](https://github.com/donglua/PhotoPicker)
 
 ## License
 ```text
