@@ -150,10 +150,11 @@ public class PhotoPickerActivity extends AppCompatActivity {
                 return true;
             }
         });
-
-        if (openCamera) {
-            linear_view.setVisibility(View.GONE);
-            pickerFragment.activityCamera();
+        if (savedInstanceState==null){
+            if (openCamera) {
+                linear_view.setVisibility(View.GONE);
+                pickerFragment.activityCamera();
+            }
         }
     }
 
