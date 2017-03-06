@@ -18,7 +18,7 @@
 
 ```groovy
 dependencies {
-    compile 'com.longsh:PhotoPicker:1.4.0'
+    compile 'com.longsh:PhotoPicker:1.5.0'
     compile 'com.android.support:design:25.1.0'
     compile 'com.android.support:recyclerview-v7:25.1.0'
     compile "com.nineoldandroids:library:2.4.0"
@@ -240,6 +240,9 @@ PhotoPicker.builder()
 ---
 ## 更新日志
 
+### Version: 1.5.0
+  *  修复拍照界面返回问题。 
+  
 ### Version: 1.4.0
   *  [#1](https://github.com/q805699513/PhotoPicker/issues/1) 优化了一些问题!
 
