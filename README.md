@@ -29,8 +29,7 @@ dependencies {
     compile 'com.yalantis:ucrop:2.2.0'
 }
 ```
-* ```appcompat-v7```version >= 23.0.0
-
+* ```appcompat-v7```version >= 24.0.0(备注:API不要低于24，最好是25.不然导入麻烦)
 ### eclipse
 [![GO HOME](http://ww4.sinaimg.cn/large/5e9a81dbgw1eu90m08v86j20dw09a3yu.jpg)
 
