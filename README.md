@@ -253,10 +253,10 @@ PhotoPicker.builder()
 * [Glide](https://github.com/bumptech/glide)
 * [PhotoPicker](https://github.com/donglua/PhotoPicker)
 
-## TODU
+## TODO
  * Glide3.7更新到Glide4.0+
  * 增加文件选择
- * 增加图片压缩返回
+ * 增加图片选择压缩返回
 
 ## License
 ```text
