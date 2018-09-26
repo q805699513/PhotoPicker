@@ -254,6 +254,7 @@ PhotoPicker.builder()
 * [PhotoPicker](https://github.com/donglua/PhotoPicker)
 
 ## TODO
+ * 兼容SDK27
  * Glide3.7更新到Glide4.0+
  * 增加文件选择
  * 增加图片选择压缩返回
